@@ -29,12 +29,12 @@ app.use(express.json())
 
 app.use("/users" , usersRoutes) 
 
-app.use(session({
-    secret: "monCodeSecret",
-    resave: true,
-    saveUninitialized: true,
+// app.use(session({
+//     secret: "monCodeSecret",
+//     resave: true,
+//     saveUninitialized: true,
 
-}));
+// }));
 
 app.use((_, res, next) => {
 
@@ -48,12 +48,12 @@ app.use((_, res, next) => {
 app.use(cookieParser("monCodeSecret"))
 
 //Routes
-app.get('/login', function (req, res) {
-    res.send('Connexion');
+app.get('/users', (req, res) => {
+    res.send("okay");
 });
 
 app.listen(PORT, () => {
     console.log(`SERVER IS LISTEN ON PORT ${PORT}`)
 })
-
+  
 
