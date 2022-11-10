@@ -4,10 +4,11 @@ import { MdOutlineLogout, MdOutlineLogin } from "react-icons/md";
 import { FaAccessibleIcon, FaUserCheck } from "react-icons/fa";
 import { useState } from 'react';
 import './Login.css';
+
 import { Stack } from '@mui/system';
 import 'animate.css';
 
-function Login() {
+function Login() { 
 
   const [errorLog, setErrorLog] = useState(false)
   const [signUp, setSignUp] = useState(false)
@@ -17,9 +18,9 @@ function Login() {
 
     <div className='coverDiv'>
       <div className='textConnecterBloc'>
-<p className='textConnecter' >{signUp ? <h1 class="animate__animated animate__fadeIn">Inscrivez-vous, Discuttez ensemble...</h1> : <h1 class="animate__animated animate__fadeInUp"> Connectez-vous au reste du Monde ! </h1>}</p>
+<p className='textConnecter' >{signUp ? <h1 class="animate__animated animate__fadeIn">Inscrivez-vous, Discuttez ensemble...<p className='textSous'> Communiquez au sein de votre entreprise ! 😊 </p></h1> : <h1 class="animate__animated animate__fadeInUp"> Connectez-vous au reste du Monde !    </h1>}</p>
 
-</div>
+</div> 
       <form>
         <Box
           className="myCover"
@@ -31,11 +32,11 @@ function Login() {
           margin="auto"
           marginRight={"150px"}
           padding={2}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px "}
+          borderRadius={2}
+          boxShadow={"0px 0px 10px "}
           sx={{
             ":hover ": {
-              boxShadow: "10px 10px 20px grey ",
+              boxShadow: "0px 0px 20px grey ",
             },
           }}
         >
@@ -48,6 +49,7 @@ function Login() {
               type={"text"}
               variant="outlined"
               fullWidth
+              size='small'
               placeholder="Définir votre nom"
               ></TextField > 
           )}
@@ -59,6 +61,7 @@ function Login() {
             variant="outlined"
             placeholder="Votre email ou numéro de téléphone"
             fullWidth
+            size='small'
           />
 
           <TextField
@@ -66,6 +69,7 @@ function Login() {
             type={"password"}
             variant="outlined"
             fullWidth
+            size='small'
             placeholder="Votre mot de passe"></TextField>
 
           <Button
@@ -78,23 +82,34 @@ function Login() {
             {signUp ? "S'inscrire" : "Connexion"}
                   </Button>
 
+                 
+                  
                   <div className="buttonSignUp">
+                 
         <Button
+       
           endIcon={signUp ? <MdOutlineLogin /> : <FaUserCheck />}
           onClick={() => setSignUp(!signUp)}
-          sx={{ marginTop: 2
+          sx={{ marginTop: 3,
+            width: 350,
+        
          }}
           display="flex"
-          variant="contained"
+          variant="outlined"
           color="success"
+          size='large'
+          
+          
         >
           {signUp ? "Connexion" : "Inscription"}
         </Button>
       </div>
                   
         </Box>
+      
       </form>
       </div>
+     
       </Stack>
     
   );
