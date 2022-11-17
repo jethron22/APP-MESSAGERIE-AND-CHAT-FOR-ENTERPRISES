@@ -11,7 +11,7 @@ const usersRoutes = require('./Routes/Users');
 const allUsersRoutes = require('./Routes/Users');
 // const auth = require('./controller/auth');
 const app = express();
-// const LoginUser = require('./Routes/LoginRoutes')
+const LoginUser = require('./Routes/LoginRoutes')
 const PORT = 2707;
 
 // connexion avec mongoDB
@@ -49,7 +49,7 @@ app.use(cookieParser("monCodeSecret"))
      
 //Routes
 app.get('/Users', allUsersRoutes)
-// app.post('/login', LoginUser) 
+app.post('/login', LoginUser) 
 app.post('/User', usersRoutes)
 
 app.listen(PORT, () => {
