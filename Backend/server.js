@@ -6,12 +6,13 @@ const passportLocal = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const {connecter} = require('./bd/connect');
+const { connecter } = require('./bd/connect');
 const usersRoutes = require('./Routes/Users');
+const allUsersRoutes = require('./Routes/Users');
+// const auth = require('./controller/auth');
 const app = express();
-const PORT = 2706; 
-
-
+// const LoginUser = require('./Routes/LoginRoutes')
+const PORT = 2707;
 
 // connexion avec mongoDB
 
@@ -19,24 +20,7 @@ connecter()
 
 // Middleware
 
-app.use(bodyParser.json());
-app.use(cors({
-    origin: "http://localhost:3000/", // react app origin connection
-    credential: true,
-}))
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json())
-
-app.use("/users" , usersRoutes) 
-
-// app.use(session({
-//     secret: "monCodeSecret",
-//     resave: true,
-//     saveUninitialized: true,
-
-// }));
-
-app.use((_, res, next) => {
+app.use((req, res, next) => {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', '*');
@@ -45,15 +29,31 @@ app.use((_, res, next) => {
 
 })
 
-app.use(cookieParser("monCodeSecret"))
 
+app.use(bodyParser.json());
+app.use(cors({
+    credential: true,
+}))
+
+app.use(express.json())
+
+
+app.use(session({
+    secret: "monCodeSecret",
+    resave: true,
+    saveUninitialized: true,
+
+}));
+
+app.use(cookieParser("monCodeSecret"))
+     
 //Routes
-app.get('/users', (req, res) => {
-    res.send("okay");
-});
+app.get('/Users', allUsersRoutes)
+// app.post('/login', LoginUser) 
+app.post('/User', usersRoutes)
 
 app.listen(PORT, () => {
     console.log(`SERVER IS LISTEN ON PORT ${PORT}`)
 })
-  
+
 
