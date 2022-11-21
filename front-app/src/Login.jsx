@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { MdOutlineLogout, MdOutlineLogin } from "react-icons/md";
 import { FaAccessibleIcon, FaUserCheck } from "react-icons/fa"; 
-import { useState } from 'react';
+import { useState, useNavigate } from 'react';
 import './Login.css';
 import { Stack } from '@mui/system';
 import 'animate.css';
@@ -21,7 +21,20 @@ function Login() {
   const UserData= () => {  axios.post(urlDeBase, {
         nom,
         motdePass
-        })};     
+        })};   
+        
+        
+        
+ function Redirection () {
+
+  const history = useNavigate,
+   faireRedirection = () =>{ 
+    let url = "http://localhost:3000/Navigation"
+    history.push('http://localhost:3000/Navigation') }
+
+ }
+
+
 
   return (
     <Stack className="stackBody" spacing={9}>  
@@ -107,10 +120,12 @@ function Login() {
               variant="contained"
               color="primary"
               fullWidth
-              onClick={()=> UserData()}
+              onClick={()=> UserData(),
+                Redirection ()
+              }
 
             >
-              
+             
               {signUp ? "S'inscrire" : "Connexion"}
             </Button>
 
