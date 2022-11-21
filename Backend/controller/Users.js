@@ -1,19 +1,20 @@
 const Users = require("../Model/Users")
 const connecter = require("../controller/Users")
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')  
 
 const addUsers = async (req, res) => {
 
     try {
 
         console.log(req.body)
-        const { nom, postnom, motdepasse } = req.body
+        const { nom, téléphone, motdePass } = req.body
 
         let users = new Users({
 
             nom,
-            postnom,
-            motdepasse,
+            téléphone,
+            motdePass,
 
         })
 
@@ -41,26 +42,27 @@ const getAllUsers = async (req, res, next) => {
 }
 
 const login = (req, res, next) => {
-    Users.findOne({ nom: req.body.nom })
+    Users.findOne({ nom: req.body.nom }) 
         .then(user => {
-            if (!user) {
-                return res.status(401).json({ message: "Nom d'utilisateur ou mot de passe incorrect" });
-            }
-            bcrypt.compare(req.body.motdepasse, user.motdepasse)
+            if (!user)  {
+                return res.status(401).json({ message: "Cet utilisateur n'existe pas" });
+            } 
+          
+            return bcrypt.compare(req.body.motdePass, user.motdePass)   
                 .then(valid => {
                     if (!motdepasse) {
-                        return res.status(501).json({ message: "Nom d'utilisateur ou mot de passe incorrect!" });
+                        return res.status(401).json({ message: "Vous avez entré un mot de passe incorrect !" });
                     }
-                    res.status(200).json({
-                        userId: user._id,
+                    return res.status(200).json({   
+                        userId: user._id, 
                         token: jwt.sign({
-                            userId: user._id
+                            userId: user._id 
                         },
                             'MY-TOKEN-IS-SECRET-WHEN-I-SIGN-IN',
-                            { expireIn: '24h' })
+                            { expireIn: '24h' },)
                     });
                 })
-                .catch(error => res.status(500).json({ error }));
+               
         })
 }
 

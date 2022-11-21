@@ -13,8 +13,9 @@ module.exports = (req, res, next) => {
        };
 	next();
    } catch(error) {
-       res.status(401).json({ error });
+
+       res.status(401).json({ message: "Une erreur s'est produite lors du login" });
    }
 };  
 
-module.exports = login;
+module.exports.login = login;

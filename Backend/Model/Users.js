@@ -5,10 +5,10 @@ const User = new mongoose.Schema({
     nom: {
         type: String
     },
-    postnom: {
+    téléphone: {
         type: String
     },
-    motdepasse: {
+    motdePass: {
         type: String
     },
 })

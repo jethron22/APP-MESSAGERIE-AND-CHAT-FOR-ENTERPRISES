@@ -9,10 +9,11 @@ const bodyParser = require('body-parser');
 const { connecter } = require('./bd/connect');
 const usersRoutes = require('./Routes/Users');
 const allUsersRoutes = require('./Routes/Users');
-// const auth = require('./controller/auth');
+const auth = require('./controller/auth');
 const app = express();
 const LoginUser = require('./Routes/LoginRoutes')
 const PORT = 2707;
+const bcrypt = require('bcrypt') 
 
 // connexion avec mongoDB
 
