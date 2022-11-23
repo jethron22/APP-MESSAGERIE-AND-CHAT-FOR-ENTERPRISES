@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { MdOutlineLogout, MdOutlineLogin } from "react-icons/md";
-import { FaAccessibleIcon, FaUserCheck } from "react-icons/fa"; 
+import { FaAccessibleIcon, FaUserCheck } from "react-icons/fa";
 import { useState, useNavigate } from 'react';
 import './Login.css';
 import { Stack } from '@mui/system';
@@ -18,26 +18,29 @@ function Login() {
 
   const urlDeBase = 'http://localhost:2707/User'
 
-  const UserData= () => {  axios.post(urlDeBase, {
-        nom,
-        motdePass
-        })};   
-        
-        
-        
- function Redirection () {
-
-  const history = useNavigate,
-   faireRedirection = () =>{ 
-    let url = "http://localhost:3000/Navigation"
-    history.push('http://localhost:3000/Navigation') }
-
- }
+  const UserData = () => {
+    axios.post(urlDeBase, {
+      nom,
+      motdePass
+    })
+  };
 
 
 
-  return (
-    <Stack className="stackBody" spacing={9}>  
+  function Redirection() {
+
+    const history = useNavigate,
+      faireRedirection = () => {
+        let url = "http://localhost:3000/Navigation"
+        history.push('http://localhost:3000/Navigation')
+      }
+
+  }
+
+
+
+  return(  
+    <Stack className="stackBody" spacing={9}>
 
       <div className='coverDiv'>
         <div className='textConnecterBloc'>
@@ -75,8 +78,8 @@ function Login() {
                 size='small'
                 placeholder="Définir votre nom"
 
-                onChange={(e) =>  {
-                  setNom(e.target.value) 
+                onChange={(e) => {
+                  setNom(e.target.value)
                 }}
 
               ></TextField >
@@ -90,11 +93,11 @@ function Login() {
               fullWidth
               size='small'
 
-              onChange={(e) =>  {
-              setMail(e.target.value)   
+              onChange={(e) => {
+                setMail(e.target.value)
               }}
 
-              
+
             />
 
             <TextField
@@ -104,13 +107,13 @@ function Login() {
               fullWidth
               size='small'
               placeholder="Votre mot de passe"
-          
-              onChange={(e) =>  {
-                setmotdePass(e.target.value)  
-                }}
-              
-              ></TextField>
-             
+
+              onChange={(e) => {
+                setmotdePass(e.target.value)
+              }}
+
+            ></TextField>
+
 
             <Button
               endIcon={signUp ? <FaUserCheck /> : <MdOutlineLogin />}
@@ -120,12 +123,12 @@ function Login() {
               variant="contained"
               color="primary"
               fullWidth
-              onClick={()=> UserData(),
-                Redirection ()
+              onClick={() => UserData()
+              
               }
 
             >
-             
+
               {signUp ? "S'inscrire" : "Connexion"}
             </Button>
 
@@ -134,7 +137,7 @@ function Login() {
               <Button
 
                 endIcon={signUp ? <MdOutlineLogin /> : <FaUserCheck />}
-                
+
                 onClick={() => setSignUp(!signUp)}
                 sx={{
                   marginTop: 3,

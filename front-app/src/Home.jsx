@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios';
 import './UsersSidebar.css'
+import MessageCard from './CardMessage';
 
 
 function Home() {
@@ -21,7 +22,7 @@ function Home() {
       <div className='AllUsers'>
       {users ? users.map(user => (
         <div className='blockUsers'>
-          <p className='userName'>{user.nom} {user.postnom}</p>
+          <p className='userName'>{user.nom}{user.postnom}</p>
         </div>
 
 )): (<div>Pas d'utilisateur pour le moment</div>)}
