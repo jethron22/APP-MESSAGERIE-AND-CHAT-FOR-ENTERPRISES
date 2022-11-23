@@ -51,9 +51,7 @@ app.use(cookieParser("monCodeSecret"))
 //Routes
 app.get('/Users', allUsersRoutes)
 app.post('/login', LoginUser) 
-app.post('/User', usersRoutes, ()=> {
-redirect('/Users')
-})
+app.get('/User', usersRoutes)
 
 app.listen(PORT, () => {
     console.log(`SERVER IS LISTEN ON PORT ${PORT}`)
