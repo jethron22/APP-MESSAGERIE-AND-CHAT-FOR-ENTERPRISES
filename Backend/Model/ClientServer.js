@@ -1,12 +1,16 @@
-const io = require('socket.io')(http);
 
-io.on('connection', function(socket){
-    console.log('a user connected');
-  });
+const socketIO = require('socket.io')(http, {
+    cors: {
+        origin: "http://localhost:3000"
+    }
+});
 
-  io.on('connection', function(socket){
-    console.log('a user connected');
-    socket.on('disconnect', function(){
-      console.log('user disconnected');
+socketIO.on('connection', (socket) => {
+    console.log(`⚡: ${socket.id} utilisateur est connecté!`);
+    socket.on('disconnect', () => {
+      console.log('🔥: utilisateur vient de se deconnecter');
+
     });
-  });
+});
+
+module.exports.socketIO = socketIO 
