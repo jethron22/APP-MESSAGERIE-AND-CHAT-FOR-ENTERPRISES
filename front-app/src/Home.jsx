@@ -20,8 +20,8 @@ function Home() {
   return (
     <div>
       <div className='AllUsers'>
-      {users ? users.map(user => (
-        <div className='blockUsers'>
+      {users ? users.map((user, index) => (
+        <div className='blockUsers' key={index}>
           <p className='userName'>{user.nom}{user.postnom}</p>
         </div>
 

@@ -1,18 +1,16 @@
-.AllUsers 
-{
-display: flex;
-flex-direction: column;
-justify-content: start;
-padding: 15px;
-background-color: black;
-color: aliceblue;
-width: 200px;
-height: 100%;
+.AllUsers {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 15px;
+    background-color: black;
+    color: aliceblue;
+    width: 200px;
+    height: 100%;
 
 }
 
-.userName
-{
+.userName {
     display: flex;
     background-color: rgb(9, 140, 216);
     padding: 10px;
@@ -21,8 +19,7 @@ height: 100%;
 
 }
 
-.navBar
-{
+.navBar {
     display: flex;
     margin: none;
     padding: 15px;
@@ -33,7 +30,20 @@ height: 100%;
     width: 100%;
 }
 
-.blockUsers
+.HomeSpan {
+    display: flex;
+
+    justify-content: center;
+}
+
+.cardUser {
+    display: flex;
+    flex-direction: rows;
+    width: 100%;
+ 
+}
+
+.CardUserBlock
 {
-   
+   margin: 20px; 
 }

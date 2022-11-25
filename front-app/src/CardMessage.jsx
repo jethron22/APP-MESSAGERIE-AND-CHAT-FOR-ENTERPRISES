@@ -1,55 +1,36 @@
-// import * as React from 'react';
-// import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
-// import './CardMessage.css';
-// import { Stack } from '@mui/system';
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Home from './Home';
+import './UsersSidebar.css'
+import CardUser from './CardUser';
+import { FaCentercode } from 'react-icons/fa';
+import { Box } from '@mui/system';
 
-// function MessageCard() {
-//   return (
-//     <Stack className='cardMessage'>
-//     <Card  sx={{ maxWidth: 345,
+export default function CardMessage() {
+	return (
+		<div style={{ margin: 100,
 
-
-//     }}>
-//       <CardMedia
-//         component="img"
-//         alt="green iguana"
-//         height="140"
-//         image="/static/images/cards/contemplative-reptile.jpg"
-//       />
-//       <CardContent>
-//         <Typography gutterBottom variant="h5" component="div">
-//           Abel Mbula
-//         </Typography>
-//         <Typography variant="body2" color="text.secondary">
-//         FullStack developer
-//         </Typography>
-//       </CardContent>
-//       <CardActions className='MessageButtonCard'>
-//       <Button variant="contained" size='large'>Discussion</Button>
-//       <Button variant="outlined" size='large'>Message</Button>
-//       </CardActions>
-//     </Card>
-//     </Stack>
-//   );
-// }
+    }}>
+		<Box>
+			<Card raised={true} sx={{ bgcolor: "#E8E8E8" }} >
+      <h1>Tous les utilisateurs</h1>
 
 
-// export default MessageCard
-
-
-import React from 'react'
-
-function CardMessage() {
-  return (
-    <div>
-      <input type="text"></input>
-    </div>
-  )
+				<CardContent>   
+          <div>
+					<h3>hhh</h3>
+          <div className='cardUser'>
+            <CardUser />
+          </div>
+          </div>
+				</CardContent>
+				<CardActions >
+				</CardActions>
+			</Card>
+			</Box>
+		</div>
+	);
 }
-
-export default CardMessage

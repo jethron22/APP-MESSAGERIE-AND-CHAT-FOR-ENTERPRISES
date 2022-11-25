@@ -16,3 +16,12 @@
     margin: auto;
    
 }
+
+.formDiv
+{
+    display: flex;
+    margin: auto;
+    margin-top: 25px;
+    /* justify-content: center; */
+    width: 200px;
+}

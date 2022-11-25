@@ -27,15 +27,15 @@ function Login() {
 
 
 
-  function Redirection() {
+  // function Redirection() {
 
-    const history = useNavigate,
-      faireRedirection = () => {
-        let url = "http://localhost:3000/Navigation"
-        history.push('http://localhost:3000/Navigation')
-      }
+  //   const history = useNavigate,
+  //     faireRedirection = () => {
+  //       let url = "http://localhost:3000/Navigation"
+  //       history.push('http://localhost:3000/Navigation')
+  //     }
 
-  }
+  // }
 
 
 
