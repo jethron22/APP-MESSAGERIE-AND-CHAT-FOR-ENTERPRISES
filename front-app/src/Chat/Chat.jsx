@@ -1,8 +1,29 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
 import UserModal from './UserModal'
+import axios from 'axios'
 
 
 function Chat() {
+
+   const [senderUserId, setSenderUserId] = useState("")
+   const urlDeBase = 'http://localhost:2707/api/sentMessages'
+
+   useEffect(() => {
+     
+   
+     return () => {
+       axios
+         .post(urlDeBase,
+           senderUserId )
+         .then((res) => {
+setSenderUserId(res.data.senderUserId)
+         })
+     }
+   }, [])
+   
+
+
   return (
 
 <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen">

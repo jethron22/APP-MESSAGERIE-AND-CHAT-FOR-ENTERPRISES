@@ -11,6 +11,7 @@ export default function UserModal() {
   const urlDeBase = 'http://localhost:2707/Users'
 
   const [users, setAllUsers] = useState("")
+  
 
   useEffect(() => {
 
@@ -66,7 +67,7 @@ export default function UserModal() {
                           <button >
                             <p> {user.id}  </p>
                             
-                            <p className="text-2xl text-white "> {user.nom} </p>
+                            <p className=" text-white "> {user.nom} </p>
                             <div className="container">
                               
                             </div>
