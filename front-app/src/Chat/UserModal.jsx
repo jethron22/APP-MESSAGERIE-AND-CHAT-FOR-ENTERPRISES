@@ -63,8 +63,8 @@ export default function UserModal() {
 
                       {users && users.map((user) =>
 
-                        <div className="bg-[grey] m-10 p-3 cursor-pointer rounded-2xl">
-                          <button >
+                        <div className="flex bg-sky-500/75 m-10 p-3 cursor-pointer rounded-2xl ">
+                          <button>
                             <p> {user.id}  </p>
                             
                             <p className=" text-white "> {user.nom} </p>
