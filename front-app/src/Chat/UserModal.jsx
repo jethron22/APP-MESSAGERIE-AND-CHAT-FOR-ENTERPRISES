@@ -4,22 +4,23 @@ import axios from "axios";
 import { useEffect, useState, } from "react";
 import { Card, Typography, Box } from "@mui/material";
 
+
 export default function UserModal() {
   const [showModal, setShowModal] = React.useState(false);
   const [nom, setNom] = useState("")
-    const urlDeBase = 'http://localhost:2707/Users'
+  const urlDeBase = 'http://localhost:2707/Users'
 
-    const [users, setAllUsers] = useState("")
+  const [users, setAllUsers] = useState("")
 
-    useEffect(() => {
+  useEffect(() => {
 
-        axios.get(urlDeBase,
-            nom,
-        ).then((res) => {
+    axios.get(urlDeBase,
+      nom,
+    ).then((res) => {
 
-            setAllUsers(res.data.users)
-        });
-    }, [])
+      setAllUsers(res.data.users)
+    });
+  }, [])
 
   return (
     <>
@@ -27,7 +28,7 @@ export default function UserModal() {
 
         type="button"
         onClick={() => setShowModal(true)}>
-     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/> </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16"> <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /> </svg>
       </button>
       {showModal ? (
         <>
@@ -44,34 +45,37 @@ export default function UserModal() {
                     className="p-1 ml-auto  border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline focus:outline"
                     type="button"
                     onClick={() => setShowModal(false)}>
-                  
+
                     <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/> <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/> 
-                    </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z" />
+                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
+                      </svg>
                     </span>
                   </button>
                 </div>
                 {/*body*/}
-                <div className="ralative p-10 flex-auto overflow-y-scroll  ">
-                  <p className="my-4 text-slate-500 h-40 w-500 text-lg leading-relaxed over">
+                <div className="ralative p-5 flex-auto overflow-y-scroll">
+                  <p className="my-2 text-slate-500 h-40 w-500 text-lg leading-relaxed over">
 
 
-                  <Box width=''>
-                                                        
-{users && users.map((user) =>  (
-    <Card sx={{
-         
-        width: 100,
-        padding: 10,
+                    <Box width='600px'>
 
-    }} key={user._id}>
-        <Typography>
-            {user.nom}{user.postnom}
-        </Typography>
+                      {users && users.map((user) =>
 
-    </Card>
-))}
-</Box>
+                        <div className="bg-[grey] m-10 p-3 cursor-pointer rounded-2xl">
+                          <button >
+                            <p> {user.id}  </p>
+                            
+                            <p className="text-2xl text-white "> {user.nom} </p>
+                            <div className="container">
+                              
+                            </div>
+                            <p> {user.postnom} </p>
+                          </button>
+                        </div>
+
+                      )}
+                    </Box>
 
 
                   </p>
@@ -81,8 +85,7 @@ export default function UserModal() {
                   <button
                     className="bg-blue-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
-                  >
+                    onClick={() => setShowModal(false)}>
                     Choisir
                   </button>
                 </div>
