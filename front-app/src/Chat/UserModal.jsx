@@ -40,8 +40,8 @@ export default function UserModal() {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl"> Selectionner un contacts </h3>
+                <div className="flex bg-red items-start justify-between p-10 border-b border-solid border-slate-200 rounded-t">
+                  <h3 className="text-4xl"> Selectionner un contacts </h3>
                   <button
                     className="p-1 ml-auto  border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline focus:outline"
                     type="button"
@@ -56,10 +56,10 @@ export default function UserModal() {
                 </div>
                 {/*body*/}
                 <div className="ralative p-5 flex-auto overflow-y-scroll">
-                  <p className="my-2 text-slate-500 h-40 w-500 text-lg leading-relaxed over">
+                  <p className="my-2 text-slate-500 h-40 w-100 text-lg leading-relaxed over">
 
 
-                    <Box width='600px'>
+                    <div className="lg:w-500" >
 
                       {users && users.map((user) =>
 
@@ -76,7 +76,7 @@ export default function UserModal() {
                         </div>
 
                       )}
-                    </Box>
+                    </div>
 
 
                   </p>

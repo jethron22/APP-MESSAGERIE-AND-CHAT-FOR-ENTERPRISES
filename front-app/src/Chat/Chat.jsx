@@ -6,22 +6,21 @@ import axios from 'axios'
 
 function Chat() {
 
-   const [senderUserId, setSenderUserId] = useState("")
-   const urlDeBase = 'http://localhost:2707/api/sentMessages'
+   const [message, setMessages] = useState("")
+   const [sendMessage, setSendMessage] = useState() 
+   const urlDeBase = 'http://localhost:2707/api/getMessages/:areUserConnectedID';
 
-   useEffect(() => {
-     
    
-     return () => {
-       axios
-         .post(urlDeBase,
-           senderUserId )
+       const AllMessage = () => {axios
+         .get(urlDeBase,
+            message,
+            )
          .then((res) => {
-setSenderUserId(res.data.senderUserId)
+setMessages(res.data.message)
+
+
          })
-     }
-   }, [])
-   
+      }
 
 
   return (
@@ -64,7 +63,7 @@ setSenderUserId(res.data.senderUserId)
       <div className="chat-message">
          <div className="flex items-end">
             <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-               <div><span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">Salut Masta, c'est comment ?</span></div>
+               <div><span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{message}</span></div>
             </div>
             <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-1" />
          </div>
@@ -80,7 +79,7 @@ setSenderUserId(res.data.senderUserId)
       <div className="chat-message">
          <div className="flex items-end">
             <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-               <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">Je suis parti à l'eglise</span></div>
+               <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600"></span></div>
                <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">C'était pourquoi ??</span></div>
                <div>
                </div>
@@ -173,6 +172,7 @@ setSenderUserId(res.data.senderUserId)
             <button 
             type="button" className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
                <span className="font-bold">Envoyer</span>
+               
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-6 w-6 ml-2 transform rotate-90">
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                </svg>
