@@ -2,29 +2,34 @@ import React from 'react'
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { MdOutlineLogout, MdOutlineLogin } from "react-icons/md";
 import { FaAccessibleIcon, FaUserCheck } from "react-icons/fa";
-import { useState, useNavigate } from 'react';
+import { useState } from 'react';
 import './Login.css';
 import { Stack } from '@mui/system';
 import 'animate.css';
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
 
 function Login() {
 
+  
   const [errorLog, setErrorLog] = useState(false)
   const [signUp, setSignUp] = useState(false)
   const [nom, setNom] = useState(false)
   const [mail, setMail] = useState("")
   const [motdePass, setmotdePass] = useState("")
+  const Navigate = useNavigate()
 
   const urlDeBase = 'http://localhost:2707/User'
+  const urlDeBase2 = 'http://localhost:2707/login'
 
   const UserData = () => {
     axios.post(urlDeBase, {
       nom,
       motdePass
-    })
-  };
 
+    })
+   
+  }
 
 
   // function Redirection() {
@@ -123,13 +128,34 @@ function Login() {
               variant="contained"
               color="primary"
               fullWidth
-              onClick={() => UserData()
+              onClick={() => {
+                if(signUp === true) {
+                  UserData()
+                }
+                if(signUp === false) {
+                  const user = axios.post(urlDeBase2, {
+                    nom,
+                    motdePass
+              
+                  })
+                  if(user) {
+
+                    Navigate("/chat")
+                  }
+                  else{
+                    Navigate("/login")
+                  }
+                }
+              }
               
               }
 
             >
 
               {signUp ? "S'inscrire" : "Connexion"}
+
+                    
+
             </Button>
 
             <div className="buttonSignUp">

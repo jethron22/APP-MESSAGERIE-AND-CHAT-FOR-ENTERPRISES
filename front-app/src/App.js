@@ -1,7 +1,8 @@
 
 import './App.css';
 import Chat from './Chat/Chat';
-// import Login from './Login';
+import Login from './Login';
+import {Router, Routes, Route, Navigate} from 'react-router-dom'
 // import Home from './Home';
 // import Navigation from './Navigation';
 // import CardMessage from './CardMessage';
@@ -11,8 +12,12 @@ function App() {
 
   return (
     <div>
-      <Chat /> 
-       
+      
+<Routes>
+  <Route path='/' element = {<Navigate to="/login" replace />}/> 
+  <Route path="/chat" element={ <Chat />} />
+  <Route path="/login" element={ <Login />} />
+</Routes>
     </div>
     
   )
