@@ -9,12 +9,13 @@ module.exports = (req, res, next) => {
        const decodedToken = jwt.verify(token, 'MY-TOKEN-IS-SECRET-WHEN-I-SIGN-IN');
        const userId = decodedToken.userId;
        req.auth = {
-           userId: userId
+           userId: userId,
+           name: nom
        };
 	next();
    } catch(error) {
 
-       res.status(401).json({ message: "Une erreur s'est produite lors du login" });
+       res.status(401).json({ message: "Une erreur s'est produite lors de la connexion" });
    }
 };  
 

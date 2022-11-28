@@ -1,11 +1,13 @@
+const express = require('express')
 const mongoose = require('mongoose')
 
 
     const MessageSchema = new mongoose.Schema({
-      
-        senderMessage : {type : string},
-        receiverMessage : {type: string},
-       
+
+        senderUserId : {type : String},
+        receiverUserId : {type: String},
+        message : {type: String},
+        
     },
     {collection: "All-Messages"})
 

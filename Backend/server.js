@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const { connecter } = require('./bd/connect');
 const usersRoutes = require('./Routes/Users');
 const allUsersRoutes = require('./Routes/Users');
+const getMessages = require('./Routes/messagesRoutes')
 const auth = require('./controller/auth');
 const app = express();
 const LoginUser = require('./Routes/LoginRoutes')
@@ -51,7 +52,9 @@ app.use(cookieParser("monCodeSecret"))
 //Routes
 app.get('/Users', allUsersRoutes)
 app.post('/login', LoginUser) 
-app.get('/User', usersRoutes)
+app.post('/User', usersRoutes)
+app.get('/api/getMessages/:areUserConnectedID', getMessages)
+app.post('/api/sentMessages', getMessages)
 
 app.listen(PORT, () => {
     console.log(`SERVER IS LISTEN ON PORT ${PORT}`)
