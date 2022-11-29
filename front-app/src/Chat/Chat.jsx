@@ -75,7 +75,7 @@ function Chat() {
                })
             }
             
-            {/* <div className="chat-message">
+            <div className="chat-message">
                <div className="flex items-end justify-end">
                   <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
                      <div><span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">Hier je t'ai cherché mais tu n'était pas chez toi !</span></div>
@@ -145,7 +145,7 @@ function Chat() {
                   </div>
                   <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-1" />
                </div>
-            </div> */}
+            </div>
          </div>
          <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
             <div className="relative flex">

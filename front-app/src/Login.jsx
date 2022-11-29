@@ -17,6 +17,7 @@ function Login() {
   const [nom, setNom] = useState(false)
   const [mail, setMail] = useState("")
   const [motdePass, setmotdePass] = useState("")
+  const [téléphone, setTéléphone] = useState("")
   const Navigate = useNavigate()
 
   const urlDeBase = 'http://localhost:2707/User'
@@ -129,14 +130,13 @@ function Login() {
               color="primary"
               fullWidth
               onClick={() => {
-                if(signUp === true) {
+                if(signUp) {
                   UserData()
                 }
-                if(signUp === false) {
+                if(!signUp) {
                   const user = axios.post(urlDeBase2, {
-                    nom,
+                    téléphone,
                     motdePass
-              
                   })
                   if(user) {
 
