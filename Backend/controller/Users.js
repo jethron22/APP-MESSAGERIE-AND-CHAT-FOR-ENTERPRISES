@@ -10,22 +10,22 @@ const addUsers = async (req, res) => {
     try {
 
         console.log(req.body)
-        const { nom, téléphone, motdePass } = req.body
+        const PasswordHashed = await bcrypt.hash(req.body.motdePass, 10) 
 
         let users = new Users({
 
-            nom,
-            téléphone,
-            motdePass,
+            nom : req.body.nom,
+            téléphone: req.body.téléphone,
+            motdePass: PasswordHashed
 
         })
 
         let result = await users.save()
-        res.status(200).json(result);
+        res.status(200).json({ message: "L'utilisateur est enregisté avec succès"});
 
     } catch (error) {
         console.log(error);
-        res.status(500).json(error);
+        res.status(500).json({message: " Erreur lors de l'enregistrement ! "});
     }
 }
 
@@ -43,34 +43,5 @@ const getAllUsers = async (req, res, next) => {
 
 }
 
-const login = (req, res, next) => {
-    console.log(req.body)
-    Users.findOne({ motdePass: req.body.motdePass })
-        .then(user => {
-            if (!user) {
-                return res.status(401).json({ message: "Cet utilisateur n'existe pas" });
-            }
 
-            const salt = bcrypt.genSalt(req.body.motdePass, 10)
-            return bcrypt.compare(req.body.motdePass, user.motdePass, salt)
-
-                .then(valid => {
-                    if (!valid) {
-                        return res.status(401).json({ message: "Vous avez entré un mot de passe incorrect !" });
-                    }
-                    return res.status(200).json({
-                        userId: user._id,
-                        name: user.nom,
-                        motdepasse: user.motdePass,
-                        token: jwt.sign({
-                            userId: user._id
-                        },
-                            'MY-TOKEN-IS-SECRET-WHEN-I-SIGN-IN',
-                            { expireIn: '24h' },)
-                    });
-                })
-
-        })
-}
-
-module.exports = { addUsers, getAllUsers, login }
+module.exports = { addUsers, getAllUsers }

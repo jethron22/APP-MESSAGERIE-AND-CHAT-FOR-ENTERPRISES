@@ -1,16 +1,16 @@
 const jwt = require('jsonwebtoken');
-const { login } = require('./Users');
+const { login } = require('./Login');
 
 
  
 module.exports = (req, res, next) => {
    try {
        const token = req.headers.authorization.split(' ')[1];
-       const decodedToken = jwt.verify(token, 'MY-TOKEN-IS-SECRET-WHEN-I-SIGN-IN');
+       const decodedToken = jwt.verify(token, 'USER_CHAT_TOKEN_SECRET');
        const userId = decodedToken.userId;
        req.auth = {
            userId: userId,
-           name: nom
+
        };
 	next();
    } catch(error) {
