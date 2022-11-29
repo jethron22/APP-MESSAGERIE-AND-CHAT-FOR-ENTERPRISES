@@ -7,8 +7,9 @@ import axios from 'axios'
 function Chat() {
 
    const [message, setMessages] = useState("")
-   const [MessagesenderUserId, setMessagesenderUserId] = useState("")
+   
    const urlDeBase = 'http://localhost:2707/api/getMessages/:areUserConnectedID';
+// const urlSendMessage = 'http://localhost:2707/api/sentMessages';
 
    useEffect(() => {
       axios
@@ -21,7 +22,7 @@ function Chat() {
 
          })
 
-   }, [])
+   },)
 
    return (
 
