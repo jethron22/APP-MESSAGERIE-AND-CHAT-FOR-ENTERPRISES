@@ -56,7 +56,7 @@ app.post('/User', usersRoutes)
 app.get('/api/getMessages/:areUserConnectedID', getMessages)
 app.post('/api/sentMessages', getMessages)
 app.listen(PORT, () => {
-    console.log(`SERVER IS LISTEN ON PORT ${PORT}`)
+    console.log(`SERVER IS LISTEN ON PORT ${PORT}`) 
 })
 
 

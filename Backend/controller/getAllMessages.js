@@ -4,7 +4,7 @@ const getMessages = (req, res) => {
     MessagesSend.find({
         $or: [
             { MessagesSenderId: req.params.areUserConnectedID },
-            { MessagesReceiverId: req.params.areUseConnectedID }
+            { MessagesReceiverId: req.params.areUserConnectedID }
         ]
 
     }).then((data) => {
