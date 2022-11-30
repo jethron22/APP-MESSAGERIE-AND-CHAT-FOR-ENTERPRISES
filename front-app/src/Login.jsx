@@ -7,17 +7,17 @@ import './Login.css';
 import { Stack } from '@mui/system';
 import 'animate.css';
 import axios from "axios";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function Login() {
 
-  
+
   const [errorLog, setErrorLog] = useState(false)
   const [signUp, setSignUp] = useState(false)
   const [nom, setNom] = useState(false)
   const [mail, setMail] = useState("")
   const [motdePass, setmotdePass] = useState("")
-  const [téléphone, setTéléphone] = useState("")
+  const [telephone, setTelephone] = useState("")
   const Navigate = useNavigate()
 
   const urlDeBase = 'http://localhost:2707/User'
@@ -26,10 +26,11 @@ function Login() {
   const UserData = () => {
     axios.post(urlDeBase, {
       nom,
+      telephone,
       motdePass
 
     })
-   
+
   }
 
 
@@ -45,7 +46,7 @@ function Login() {
 
 
 
-  return(  
+  return (
     <Stack className="stackBody" spacing={9}>
 
       <div className='coverDiv'>
@@ -93,14 +94,14 @@ function Login() {
 
             <TextField
               margin="normal"
-              type={"email"}
+              type={"number"}
               variant="outlined"
-              placeholder="Votre email ou numéro de téléphone"
+              placeholder="Votre numéro de téléphone"
               fullWidth
               size='small'
 
               onChange={(e) => {
-                setMail(e.target.value)
+                setTelephone(e.target.value)
               }}
 
 
@@ -129,32 +130,33 @@ function Login() {
               variant="contained"
               color="primary"
               fullWidth
-              onClick={() => {
-                if(signUp) {
+              onClick={async () => {
+                if (signUp) {
                   UserData()
                 }
-                if(!signUp) {
-                  const user = axios.post(urlDeBase2, {
-                    téléphone,
+                if (!signUp) {
+                  const user = await axios.post(urlDeBase2, {
+                    telephone,
                     motdePass
                   })
-                  if(user) {
-
+                  if (user) {
+                    localStorage.setItem("nom",  user.data.userName) 
+                    console.log( user)
                     Navigate("/chat")
                   }
-                  else{
+                  else {
                     Navigate("/login")
                   }
                 }
               }
-              
+
               }
 
             >
 
               {signUp ? "S'inscrire" : "Connexion"}
 
-                    
+
 
             </Button>
 

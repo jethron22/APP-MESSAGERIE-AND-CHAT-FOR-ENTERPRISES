@@ -41,7 +41,7 @@ function Chat() {
                </div>
                <div className="flex flex-col leading-tight">
                   <div className="text-2xl mt-1 flex items-center">
-                     <span className="text-gray-700 mr-3">Jéthron Kashira.</span>
+                     <span className="text-gray-700 mr-3">{localStorage.getItem("nom")}</span>
                   </div>
                   <span className="text-sm text-gray-600"> FullStack Web Developer </span>
                </div>
@@ -67,9 +67,9 @@ function Chat() {
 <div className="chat-message">
                <div className="flex items-end">
                   <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                     <div><span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{mes.message}</span></div>
+                     <div><span className="text-sm px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">{mes.message}</span></div>
                   </div>
-                  <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-1" />
+                  <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-8 h-8 rounded-full order-1" />
                </div>
             </div>
                   )
