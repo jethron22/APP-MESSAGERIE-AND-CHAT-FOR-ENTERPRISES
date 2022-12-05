@@ -12,7 +12,7 @@ Exécution en locale
 
 Assurez-vous que Node.js et npm sont installés.
 
-Cloner ou télécharger le référentiel
+Cloner ou télécharger le projet
 
 git https://github.com/jethron22/APP-MESSAGERIE-AND-CHAT-FOR-ENTERPRISES/master
 $ cd messagerie
@@ -24,7 +24,8 @@ MongoDB démarre en cas de besoin
 
 Démarrer l'application
 
- point d'entrée server.js
+Point d'entrée server.js
+ 
 L'application s'exécute à partir de localhost : 2707.
 
 Comment ça fonctionne
@@ -32,7 +33,7 @@ Une base de données appelée "chat_db" nommée est créée via le code. Les inf
 
 D'utilisateur à utilisateur, sous forme de diffusion de publication ou de groupe dans la messagerie de la salle. Messagerie d'utilisateur à utilisateur :
 
- /w messagetexte du nom d'utilisateur
+messagetexte du nom d'utilisateur
 le message est envoyé comme.
 Prises
 Avoir une connexion active ouverte entre le client et le serveur afin que le client puisse envoyer et recevoir des données. Cela permet une communication en temps réel à l'aide de sockets TCP. Ceci est rendu possible par Socket.io.
