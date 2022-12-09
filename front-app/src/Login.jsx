@@ -138,10 +138,12 @@ function Login() {
                   const user = await axios.post(urlDeBase2, {
                     telephone,
                     motdePass
+
                   })
                   if (user) {
                     localStorage.setItem("nom",  user.data.userName) 
-                    console.log( user)
+                    localStorage.setItem("id", user.data.userId)
+                    localStorage.setItem("Token", user.data.userToken)
                     Navigate("/chat")
                   }
                   else {

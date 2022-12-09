@@ -1,11 +1,19 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
+import {useNavigate} from 'react-router-dom'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+
 export default function Notifications() {
+  // const exitButton = localStorage.getItem("nom")
+  const Navigate = useNavigate()
+  const exitLog =()=> {
+    localStorage.clear()
+    Navigate("/login")
+  }
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -32,12 +40,17 @@ export default function Notifications() {
                 {({ active }) => (
                   <button
                     type="submit"
+                    onClick={() => exitLog()}
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       'block w-full px-4 py-2 text-left text-sm'
                     )}
                   >
+
+                    
                     Déconnecter {localStorage.getItem("nom")}
+
+                    
                   </button>
                 )}
               </Menu.Item>

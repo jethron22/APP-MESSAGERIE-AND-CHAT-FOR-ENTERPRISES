@@ -5,24 +5,35 @@ import axios from 'axios'
 import Notifications from './Notifications'
 
 
+
 function Chat() {
+   const [ecrire, setEcrire] = useState();
 
    const [message, setMessages] = useState("")
+   const [sentMessages, setSentMessage] = useState('')
 
-   const urlDeBase = 'http://localhost:2707/api/getMessages/:areUserConnectedID';
-   // const urlSendMessage = 'http://localhost:2707/api/sentMessages';
+   const urlSendMessage = 'http://localhost:2707/api/sentMessages';
 
-   useEffect(() => {
+   const [selectedUser, setSelectedUser] = useState()
+
+
+   // const urlDeBase = 'http://localhost:2707/api/getMessages/:areUserConnectedID';
+   // // const urlSendMessage = 'http://localhost:2707/api/sentMessages';
+
+
+
+   const SendMessage = () => {
       axios
-         .get(urlDeBase,
-            message,
+         .post(urlSendMessage, {
+            
+         }
+           
 
          )
          .then((res) => {
-            setMessages(res.data)
+            
          })
-
-   },)
+   }
 
    return (
 
@@ -41,10 +52,11 @@ function Chat() {
                </div>
                <div className="flex flex-col leading-tight">
                   <div className="text-2xl mt-1 flex items-center">
-                     <span className="text-gray-700 mr-3">{localStorage.getItem("nom")}</span>
+  <span className="text-gray-700 mr-3"> {!selectedUser ? localStorage.getItem("nom"): selectedUser}</span>
+
                   </div>
                   <span className="text-sm text-gray-600"> FullStack Web Developer </span>
-               </div>
+               </div> 
             </div>
             <div className="flex items-center space-x-2">
                {/* <button type="button" className="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
@@ -52,9 +64,9 @@ function Chat() {
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                   </svg>
                </button> */}
-              
-               <Notifications />
-               <UserModal />
+
+
+               <UserModal setSelectedUser={setSelectedUser}/>
                <button type="button" className="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
@@ -91,7 +103,7 @@ function Chat() {
                <div className="flex items-end">
                   <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                      <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">Merci</span></div>
-                     <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">C'était pourquoi ??</span></div>
+                     <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">{ecrire}</span></div>
                      <div>
                      </div>
                   </div>
@@ -118,7 +130,7 @@ function Chat() {
             <div className="chat-message">
                <div className="flex items-end justify-end">
                   <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-                     <div><span className="px-4 py-2 rounded-lg inline-block bg-blue-600 text-white "> Tu bosse toujours à l'académie ??</span></div>
+                     <div><span className="px-4 py-2 rounded-lg inline-block bg-blue-600 text-white "> s</span></div>
                      <div><span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">Parceque en t'envoyant le message je croyais que t'avais déjà terminé avec l'académie mon cher!</span></div>
                   </div>
                   <img src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-2" />
@@ -145,7 +157,7 @@ function Chat() {
                <div className="flex items-end">
                   <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
 
-                     <div><span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600"> D'accord mon cher, à ce soir ! </span></div>
+                     <div><span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600"></span></div>
                   </div>
                   <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="My profile" className="w-6 h-6 rounded-full order-1" />
                </div>
@@ -160,7 +172,11 @@ function Chat() {
                      </svg>
                   </button>
                </span>
-               <input type="text" placeholder="Ecrivez votre message !" className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3" />
+               <input
+
+                 
+
+                  type="text" placeholder="Ecrivez votre message !" className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3" />
                <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
                   <button type="button" className="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-gray-600">
@@ -181,6 +197,11 @@ function Chat() {
                      </svg>
                   </button>
                   <button
+
+                     onClick={(e) => 
+                        setEcrire(e.target.value)
+
+                     }
                      type="button" className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
                      <span className="font-bold">Envoyer</span>
 

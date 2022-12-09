@@ -5,13 +5,17 @@ import { useEffect, useState, } from "react";
 import { Card, Typography, Box } from "@mui/material";
 
 
-export default function UserModal() {
+export default function UserModal({ setSelectedUser }) {
   const [showModal, setShowModal] = React.useState(false);
   const [nom, setNom] = useState("")
+  const [MyuserId, setMyUserId] = useState()
   const urlDeBase = 'http://localhost:2707/Users'
-
   const [users, setAllUsers] = useState("")
-  
+
+
+
+  // const selectUser = 
+
 
   useEffect(() => {
 
@@ -22,6 +26,7 @@ export default function UserModal() {
       setAllUsers(res.data.users)
     });
   }, [])
+
 
   return (
     <>
@@ -40,9 +45,9 @@ export default function UserModal() {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex bg-red items-start justify-between p-10 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-4xl"> Selectionner un contacts </h3>
-                  <button
+                <div className="flex bg-red items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                  <h4 className="text-4xl"> Selectionner un contacts </h4>
+                  {/* <button
                     className="p-1 ml-auto  border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline focus:outline"
                     type="button"
                     onClick={() => setShowModal(false)}>
@@ -52,43 +57,40 @@ export default function UserModal() {
                         <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z" />
                       </svg>
                     </span>
-                  </button>
+                  </button> */}
                 </div>
                 {/*body*/}
                 <div className="ralative p-5 flex-auto overflow-y-scroll">
-                  <p className="my-2 text-slate-500 h-40 w-100 text-lg leading-relaxed over">
+                  <p className="my-2 text-slate-500 h-4 w-400  leading-relaxed over">
 
 
-                    <div className="lg:w-500" >
+                    <div className="lg:w-500">
 
-                      {users && users.map((user) =>
+                      {users && users.map((user) => 
+ 
+                        <div   onClick={() => localStorage.getItem("id", user._id) (setSelectedUser(user.nom)(setShowModal(false)))} className="flex bg-sky-500/75 m-10 p-3 cursor-pointer rounded-2xl ">
+                         
+                          <p className="text-white"> {user.nom} </p>
+                         
+                          <div className="container">
 
-                        <div className="flex bg-sky-500/75 m-10 p-3 cursor-pointer rounded-2xl ">
-                          <button>
-                            <p> {user.id}  </p>
-                            
-                            <p className=" text-white "> {user.nom} </p>
-                            <div className="container">
-                              
-                            </div>
-                            <p> {user.postnom} </p>
-                          </button>
+                          </div>
+                          <p> {user.postnom} </p>
+
+
                         </div>
 
                       )}
                     </div>
-
-
                   </p>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="bg-blue-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  {/* <button
+                    className="textppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}>
-                    Choisir
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

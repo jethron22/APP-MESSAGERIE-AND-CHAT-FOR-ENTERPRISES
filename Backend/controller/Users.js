@@ -9,24 +9,20 @@ const addUsers = async (req, res) => {
 
     try {
 
-        
-
-        const PasswordHashed = await bcrypt.hash(req.body.motdePass, 10) 
-
+        const PasswordHashed = await bcrypt.hash(req.body.motdePass, 10)
         let users = new Users({
-
-            nom : req.body.nom,
+            nom: req.body.nom,
             telephone: req.body.telephone,
             motdePass: PasswordHashed
 
         })
 
         users.save()
-        res.status(200).json({ message: "L'utilisateur est enregisté avec succès"});
+        res.status(200).json({ message: "L'utilisateur est enregisté avec succès" });
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({message: " Erreur lors de l'enregistrement ! "});
+        res.status(500).json({ message: " Erreur lors de l'enregistrement ! " });
     }
 }
 
