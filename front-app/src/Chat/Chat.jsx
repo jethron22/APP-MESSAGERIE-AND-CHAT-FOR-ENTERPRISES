@@ -10,13 +10,13 @@ function Chat() {
    const [ecrire, setEcrire] = useState();
 
    const [message, setMessages] = useState("")
-   const [sentMessages, setSentMessage] = useState('')
+   const [senderUserId, setSenderUserId] = useState()
 
-   const urlSendMessage = 'http://localhost:2707/api/sentMessages';
+   const urlSendMessage = process.env.REACT_APP_API_SETTING_FRONT;
 
    const [selectedUser, setSelectedUser] = useState()
 
-
+console.log(selectedUser)
    // const urlDeBase = 'http://localhost:2707/api/getMessages/:areUserConnectedID';
    // // const urlSendMessage = 'http://localhost:2707/api/sentMessages';
 
@@ -52,7 +52,7 @@ function Chat() {
                </div>
                <div className="flex flex-col leading-tight">
                   <div className="text-2xl mt-1 flex items-center">
-  <span className="text-gray-700 mr-3"> {!selectedUser ? localStorage.getItem("nom"): selectedUser}</span>
+  <span className="text-gray-700 mr-3"> {!selectedUser ? localStorage.getItem("nom"): selectedUser.nom}</span>
 
                   </div>
                   <span className="text-sm text-gray-600"> FullStack Web Developer </span>
@@ -174,7 +174,11 @@ function Chat() {
                </span>
                <input
 
-                 
+                        onClick={(e) => 
+                        setEcrire(e.target.value)
+          
+
+                     }
 
                   type="text" placeholder="Ecrivez votre message !" className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3" />
                <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
@@ -196,12 +200,11 @@ function Chat() {
                         </path>
                      </svg>
                   </button>
+                  
                   <button
 
-                     onClick={(e) => 
-                        setEcrire(e.target.value)
-
-                     }
+                    
+                    onClick={(e)=> setEcrire()}
                      type="button" className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
                      <span className="font-bold">Envoyer</span>
 

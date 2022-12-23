@@ -8,7 +8,7 @@ import { Card, Typography, Box } from "@mui/material";
 export default function UserModal({ setSelectedUser }) {
   const [showModal, setShowModal] = React.useState(false);
   const [nom, setNom] = useState("")
-  const [MyuserId, setMyUserId] = useState()
+  const [userId, setMyUserId] = useState()
   const urlDeBase = 'http://localhost:2707/Users'
   const [users, setAllUsers] = useState("")
 
@@ -61,23 +61,24 @@ export default function UserModal({ setSelectedUser }) {
                 </div>
                 {/*body*/}
                 <div className="ralative p-5 flex-auto overflow-y-scroll">
-                  <p className="my-2 text-slate-500 h-4 w-400  leading-relaxed over">
+                  <p className="my-2 text-slate-500 h-40 w-400  leading-relaxed over">
 
 
-                    <div className="lg:w-500">
+                    <div className="lg:w-500" onClick={() => setShowModal(false)}>
 
-                      {users && users.map((user) => 
- 
-                        <div   onClick={() => localStorage.getItem("id", user._id) (setSelectedUser(user.nom)(setShowModal(false)))} className="flex bg-sky-500/75 m-10 p-3 cursor-pointer rounded-2xl ">
-                         
+                      {users && users.map((user) =>
+
+                        <div onClick={(e) => {
+                          setSelectedUser(user)
+                        }}
+                          className="flex bg-sky-500/75 m-10 p-3 cursor-pointer rounded-2xl ">
+
                           <p className="text-white"> {user.nom} </p>
-                         
+
                           <div className="container">
 
                           </div>
-                          <p> {user.postnom} </p>
-
-
+                          
                         </div>
 
                       )}
