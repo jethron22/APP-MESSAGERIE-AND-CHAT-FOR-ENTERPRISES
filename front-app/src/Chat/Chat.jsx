@@ -7,9 +7,10 @@ import Notifications from './Notifications'
 
 
 function Chat() {
-   const [ecrire, setEcrire] = useState();
+   const [id, setId] = useState();
 
-   const [message, setMessages] = useState("")
+
+   const [message, setMessages] = useState()
    const [senderUserId, setSenderUserId] = useState()
 
    const urlSendMessage = process.env.REACT_APP_API_SETTING_FRONT;
@@ -21,19 +22,6 @@ console.log(selectedUser)
    // // const urlSendMessage = 'http://localhost:2707/api/sentMessages';
 
 
-
-   const SendMessage = () => {
-      axios
-         .post(urlSendMessage, {
-            
-         }
-           
-
-         )
-         .then((res) => {
-            
-         })
-   }
 
    return (
 
@@ -103,7 +91,7 @@ console.log(selectedUser)
                <div className="flex items-end">
                   <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                      <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">Merci</span></div>
-                     <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">{ecrire}</span></div>
+                     <div><span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">{message}</span></div>
                      <div>
                      </div>
                   </div>
@@ -174,11 +162,12 @@ console.log(selectedUser)
                </span>
                <input
 
-                        onClick={(e) => 
-                        setEcrire(e.target.value)
+                  onChange={(e) => {
+                     setMessages(e.target.value)
+                  }}
           
 
-                     }
+                     
 
                   type="text" placeholder="Ecrivez votre message !" className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3" />
                <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
@@ -204,7 +193,12 @@ console.log(selectedUser)
                   <button
 
                     
-                    onClick={(e)=> setEcrire()}
+                    onClick={ (e)=>  {
+                      axios.post(urlSendMessage, {
+                        id,
+                        
+                     }).then()
+                    }}
                      type="button" className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
                      <span className="font-bold">Envoyer</span>
 

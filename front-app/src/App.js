@@ -6,7 +6,7 @@ import {Router, Routes, Route, Navigate} from 'react-router-dom'
 // import Home from './Home';
 // import Navigation from './Navigation';
 // import CardMessage from './CardMessage';
-// import HomePage from './HomePage';
+// import HomePage from './HomePage'
 
 function App() {
 
