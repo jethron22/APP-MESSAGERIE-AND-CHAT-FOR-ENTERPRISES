@@ -11,6 +11,6 @@ const User = new mongoose.Schema({
     motdePass: {
         type: String
     },
-})
+}, {collection: "Users"},)
 
 module.exports = mongoose.model('user', User)
