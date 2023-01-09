@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import UserModal from './UserModal'
 import axios from 'axios'
 import Notifications from './Notifications'
@@ -11,8 +11,6 @@ function Chat() {
 
 
    const [message, setMessages] = useState()
-   const [senderUserId, setSenderUserId] = useState()
-
    const urlSendMessage = process.env.REACT_APP_API_SETTING_FRONT;
 
    const [selectedUser, setSelectedUser] = useState()
