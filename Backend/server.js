@@ -1,6 +1,6 @@
 
 const express = require('express');
-const cors = require('cors');     
+const cors = require('cors');
 const passport = require('passport');
 const passportLocal = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
@@ -14,7 +14,7 @@ const auth = require('./controller/auth');
 const app = express();
 const LoginUser = require('./Routes/LoginRoutes')
 const PORT = 2707;
-const bcrypt = require('bcrypt') 
+const bcrypt = require('bcrypt')
 
 // connexion avec mongoDB
 
@@ -48,15 +48,15 @@ app.use(session({
 }));
 
 app.use(cookieParser("monCodeSecret"))
-     
+app.use(express.urlencoded({extended: false}));
 //Routes
 app.get('/Users', allUsersRoutes)
-app.post('/login', LoginUser) 
+app.post('/login', LoginUser)
 app.post('/User', usersRoutes)
 app.get('/api/getMessages/:areUserConnectedID', getMessages)
 app.post('/api/sentMessages', getMessages)
 app.listen(PORT, () => {
-    console.log(`SERVER IS LISTEN ON PORT ${PORT}`) 
+    console.log(`SERVER IS LISTEN ON PORT ${PORT}`)
 })
 
 
